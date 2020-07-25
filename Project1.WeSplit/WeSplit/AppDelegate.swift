@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  WeSplit
 //
-//  Created by bixbow on 15.07.2020.
+//  Created by camotsuc on 15.07.2020.
 //  Copyright © 2020 Robert Pliev. All rights reserved.
 //
 
