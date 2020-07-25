@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  GuessTheFlag
 //
-//  Created by bixbow on 21.07.2020.
+//  Created by camotsuc on 21.07.2020.
 //  Copyright © 2020 Robert Pliev. All rights reserved.
 //
 
