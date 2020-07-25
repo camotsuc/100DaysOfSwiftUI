@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  LengthCounter
 //
-//  Created by bixbow on 20.07.2020.
+//  Created by camotsuc on 20.07.2020.
 //  Copyright © 2020 Robert Pliev. All rights reserved.
 //
 
