@@ -73,6 +73,10 @@ struct ContentView: View {
             score += 1
             restartGame()
         }
+        else if index ==  gameTool - 2 {
+            score += 1
+            restartGame()
+        }
     }
     
     func checkResult(_ i: Int, _ gameTool: Int) {
