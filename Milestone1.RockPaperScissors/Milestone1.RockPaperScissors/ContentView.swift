@@ -58,64 +58,38 @@ struct ContentView: View {
         }
     }
     
+    func logic(index: Int, gameTool:Int) {
+        if index == gameTool {
+            score += 0
+            restartGame()
+        } else if index == gameTool + 1 {
+            score += 1
+            restartGame()
+        } else if index == gameTool + 2 {
+            score += 1
+            restartGame()
+        }
+        else if index ==  gameTool - 1 {
+            score += 1
+            restartGame()
+        }
+    }
+    
     func checkResult(_ i: Int, _ gameTool: Int) {
         let index = i
         switch gameTool {
         case 2:
             if gameResultChoise && score <= 10 {
-                if index == gameTool {
-                    score += 0
-                    restartGame()
-                } else if index == gameTool - 1 {
-                    score += 1
-                    restartGame()
-                } else if index == gameTool - 2 {
-                    score += 1
-                    restartGame()
-                }
+                logic(index: index, gameTool: gameTool)
             }else if !gameResultChoise && score <= 10 {
-                if index == gameTool {
-                    score += 0
-                    restartGame()
-                } else if index == gameTool - 1 {
-                    score -= 1
-                    restartGame()
-                } else if index == gameTool - 2 {
-                    score += 1
-                    restartGame()
-                }
+                logic(index: index, gameTool: gameTool)
                 break
             }
         default:
             if gameResultChoise && score <= 10{
-                if index == gameTool {
-                    score += 0
-                    restartGame()
-                } else if index == gameTool + 1 {
-                    score += 1
-                    restartGame()
-                } else if index == gameTool + 2 {
-                    score += 1
-                    restartGame()
-                }
-                else if index ==  gameTool - 1 {
-                    score += 1
-                    restartGame()
-                }
+                logic(index: index, gameTool: gameTool)
             } else if !gameResultChoise && score <= 10  {
-                if index == gameTool {
-                    score += 0
-                    restartGame()
-                } else if index == gameTool + 1 {
-                    score += 1
-                    restartGame()
-                } else if index == gameTool + 2 {
-                    score += 1
-                    restartGame()
-                } else if index ==  gameTool - 1 {
-                    score += 1
-                    restartGame()
-                }
+                logic(index: index, gameTool: gameTool)
             }
         }
         if score == 10 {
