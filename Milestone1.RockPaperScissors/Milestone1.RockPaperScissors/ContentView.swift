@@ -57,45 +57,28 @@ struct ContentView: View {
                 })
         }
     }
-    
-    func logic(index: Int, gameTool:Int) {
-        if index == gameTool {
-            score += 0
-            restartGame()
-        } else if index == gameTool + 1 {
-            score += 1
-            restartGame()
-        } else if index == gameTool + 2 {
-            score += 1
-            restartGame()
+func logic(_ index: Int, _ gameTool: Int) {
+        if gameResultChoise {
+            if (gameTool == 0 && index == 1) || (gameTool == 1 && index == 2) || (gameTool == 2 && index == 0) {
+                score += 1
+            } else if index == gameTool {
+                score -= 0
+            } else {
+                score -= 1
+            }
+        } else {
+            if (gameTool == 0 && index == 1) || (gameTool == 1 && index == 2) || (gameTool == 2 && index == 0) {
+                score -= 1
+            } else if index == gameTool {
+                score -= 0
+            } else {
+                score += 1
+            }
         }
-        else if index ==  gameTool - 1 {
-            score += 1
-            restartGame()
-        }
-        else if index ==  gameTool - 2 {
-            score += 1
-            restartGame()
-        }
+        restartGame()
     }
-    
     func checkResult(_ i: Int, _ gameTool: Int) {
-        let index = i
-        switch gameTool {
-        case 2:
-            if gameResultChoise && score <= 10 {
-                logic(index: index, gameTool: gameTool)
-            }else if !gameResultChoise && score <= 10 {
-                logic(index: index, gameTool: gameTool)
-                break
-            }
-        default:
-            if gameResultChoise && score <= 10{
-                logic(index: index, gameTool: gameTool)
-            } else if !gameResultChoise && score <= 10  {
-                logic(index: index, gameTool: gameTool)
-            }
-        }
+        logic(i, gameTool)
         if score == 10 {
             showAlert = true
             restartGame()
