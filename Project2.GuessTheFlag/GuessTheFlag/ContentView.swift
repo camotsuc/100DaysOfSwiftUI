@@ -26,7 +26,8 @@ struct ContentView: View {
     @State private var showingScore = false
     @State private var tappedCountry = ""
     @State private var userScore = 0
-    
+    @State private var opacityAmount = 1.0
+    @State private var rotationAmount = 0.0
     @State private var scoreTitle = ""
     
    
@@ -52,39 +53,52 @@ struct ContentView: View {
                     }) {
                         FlagImage(image: self.countries[number])
                     }
+                    .opacity(number == self.correctAnswer ? 1 : self.opacityAmount)
+                    .rotation3DEffect(.degrees(number == self.correctAnswer ? self.rotationAmount : 0),
+                        axis: (x: 0, y: 1, z: 0))
                 }
                 Text("Your score is \(userScore)")
                     .foregroundColor(.white)
                     .font(.largeTitle)
                     .fontWeight(.black)
+                if showingScore == true {
+                    Text("This was flag of \(tappedCountry)")
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .fontWeight(.black)
+                }
                 Spacer()
             }
         }
-        
-            
-        .alert(isPresented: $showingScore) {
-            Alert(title: Text(scoreTitle), message: Text("This is flag of \(tappedCountry)"), dismissButton: .default(Text("Countinue")) {
-                self.askQuestion()
-                })
-        }
-        
-        
     }
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
             scoreTitle = "Correct"
             userScore += 1
             countries.shuffle()
+            rotationAmount = 0.0
+            withAnimation(.interactiveSpring()) {
+                self.opacityAmount = 0.25
+            }
+            withAnimation(.interpolatingSpring(stiffness: 30, damping: 15)) {
+                self.rotationAmount = 360
+            }
+            askQuestion()
         } else {
             scoreTitle = "Wrong"
             userScore -= 1
             showingScore = true
+            askQuestion()
         }
     }
     
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        withAnimation(.interactiveSpring()) {
+            self.opacityAmount = 1
+        }
+
     }
 }
 
