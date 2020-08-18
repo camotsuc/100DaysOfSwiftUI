@@ -19,29 +19,39 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             Text(item.name)
                                 .font(.headline)
+                            
                             Text(item.type)
                         }
-
+                        
                         Spacer()
                         Text("$\(item.amount)")
+                            .foregroundColor(self.getColor(amount: item.amount))
                     }
                 }
-            .onDelete(perform: removeItems)
+                .onDelete(perform: removeItems)
             }
             .navigationBarTitle("iExpense")
-            .navigationBarItems(trailing: Button(action: {
+            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
                 self.showingAddExpense = true
             }) {
                 Image(systemName: "plus")
-                }
-            )
-            .sheet(isPresented: $showingAddExpense) {
-                AddView(expenses: self.expenses)
+            })
+                .sheet(isPresented: $showingAddExpense) {
+                    AddView(expenses: self.expenses)
             }
         }
     }
     func removeItems(at offSets: IndexSet) {
         expenses.items.remove(atOffsets: offSets)
+    }
+    func getColor(amount: Int) -> Color? {
+        if amount <= 10 {
+            return Color.gray
+        } else if amount >= 11 && amount <= 100 {
+            return Color.purple
+        } else {
+            return Color.red
+        }
     }
 }
 
