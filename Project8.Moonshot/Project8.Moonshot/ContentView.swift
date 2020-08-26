@@ -39,7 +39,7 @@ struct ContentView: View {
                     }) {
                         Text(self.showNames ? "Show launch dates" : "Show pilots names")
                 })
-                    .animation(.easeInOut(duration: 1.0))
+                    .animation(.easeIn)
         }
     }
 }
