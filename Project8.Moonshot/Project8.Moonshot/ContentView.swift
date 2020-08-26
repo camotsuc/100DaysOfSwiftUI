@@ -26,8 +26,9 @@ struct ContentView: View {
                                 .font(.headline)
                                 .padding(1)
                             Text(self.showNames ? mission.pilots : mission.formattedLaunchDate)
-                                .font(.system(size: 10))
-                                .lineLimit(1)
+                                .font(.system(size: 16))
+                            
+                                .lineLimit(2)
                         }
                     }
                 }
