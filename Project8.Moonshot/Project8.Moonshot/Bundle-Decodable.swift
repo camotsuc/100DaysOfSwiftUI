@@ -21,10 +21,11 @@ extension Bundle {
         formatter.dateFormat = "y-MM-dd"
         decoder.dateDecodingStrategy = .formatted(formatter)
         
+        
+        
         guard let loaded = try? decoder.decode(T.self, from: data) else {
             fatalError("Failed to decode \(file) from bundle.")
         }
-        
         return loaded
     }
 }
