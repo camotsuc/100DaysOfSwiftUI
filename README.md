@@ -8,21 +8,21 @@ Here you can find solutions for every day in the challenge.
 # Challenge 1
 
 # 1
-We need to add a header to the third section, saying “Amount per person”.
+Add a header to the third section, saying “Amount per person”.
 ```swift
     Section(header: Text("Amount per person")) {
         Text("$\(eachAmount, specifier: "%.2f")")
     }
 ```
 # 2
-We need to add another section showing the total amount for the check – i.e., the original amount plus tip value, without dividing by the number of people.
+Add another section showing the total amount for the check – i.e., the original amount plus tip value, without dividing by the number of people.
 ```swift
 Section(header: Text("Total amount")) {
     Text("$\(totalAmount, specifier: "%.2f")")
 }
 ```
 # 3
-We need to change the “Number of people” picker to be a text field, making sure to use the correct keyboard type.
+Change the “Number of people” picker to be a text field, making sure to use the correct keyboard type.
 ```swift
 TextField("Peoples", text: $numberOfPeople)
     .keyboardType(.decimalPad)
@@ -33,7 +33,7 @@ First challenge was pretty easy, isn't it?
 # Challenge 2
 
 # 1 
-We need to add an @State property to store the user’s score, modify it when they get an answer right or wrong, then display it in the alert.
+Add an @State property to store the user’s score, modify it when they get an answer right or wrong, then display it in the alert.
 Firstly we need to add this variable.
 ```swift
  @State private var userScore = 0
