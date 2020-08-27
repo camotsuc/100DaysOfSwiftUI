@@ -3,6 +3,7 @@
 Here you can find solutions for every day in the challenge.
 
 [Challenge 1](https://github.com/camotsuc/100DaysOfSwiftUI#challenge-1)
+
 [Challenge 2](https://github.com/camotsuc/100DaysOfSwiftUI#challenge-2)
 
 # Challenge 1
