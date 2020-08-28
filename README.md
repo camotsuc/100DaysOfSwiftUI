@@ -6,6 +6,8 @@ Here you can find solutions for every day in the challenge.
 
 [Challenge 2](https://github.com/camotsuc/100DaysOfSwiftUI#challenge-2)
 
+[Challenge 3](https://github.com/camotsuc/100DaysOfSwiftUI#challenge-3)
+
 # Challenge 1
 
 # 1
@@ -84,5 +86,50 @@ After we'll change alert to show tappedCountry
     Alert(title: Text(scoreTitle), message: Text("This is flag of \(tappedCountry)"), dismissButton: .default(Text("Countinue")) {
         self.askQuestion()
         })
+}
+```
+
+# Challenge 3
+
+# 1 
+Create a custom ViewModifier (and accompanying View extension) that makes a view have a large, blue font suitable for prominent titles in a view.
+```swift
+struct TitlesView: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .font(.largeTitle)
+            .foregroundColor(Color.blue)
+        }
+    }
+```
+And extension for this
+```swift
+extension View {
+    func titleStyle() -> some View {
+        self.modifier(Title())
+    }
+}
+```
+   # 2
+Go back to project 1 and use a conditional modifier to change the total amount text view to red if the user selects a 0% tip.
+```swift
+Section(header: Text("Total amount")) {
+    Text("$\(totalAmount, specifier: "%.2f")")
+        .foregroundColor(tipPecentage == 4 ? Color.red : Color.black) // 
+}
+```
+# 3
+Go back to project 2 and create a FlagImage() view that renders one flag image using the specific set of modifiers we had.
+```swift
+struct FlagImage: View {
+    var image: String
+    var body: some View {
+        Image(image)
+            .renderingMode(.original)
+            .clipShape(Capsule())
+            .overlay(Capsule().stroke(Color.black))
+            .shadow(color: .black, radius: 2)
+    }
 }
 ```
